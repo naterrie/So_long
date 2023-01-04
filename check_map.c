@@ -18,7 +18,7 @@ int	nbline(char *file)
 	int	fd;
 
 	line = 0;
-	fd = open(file, O_RDONLY);
+	fd = open(file,	O_RDONLY);
 	while (get_next_line(fd) != 0)
 		line++;
 	return (line);
@@ -43,7 +43,7 @@ int	check_file_name(char *file)
 				return (0);
 		}
 	}
-	ft_printf("ERROR\n WRONG FILE NAME");
+	write(1, "ERROR\n WRONG FILE NAME", 22);
 	return (1);
 }
 
@@ -87,12 +87,12 @@ int	check_map(char *file)
 	map = mapset(file);
 	if (check_elements(map) == 1)
 	{
-		ft_printf("ERROR\n WRONG NUMBER ELEMENTS");
+		write(1, "ERROR\n WRONG NUMBER ELEMENTS", 28);
 		return (1);
 	}
 	if (check_border(map) == 1)
 	{
-		ft_printf("ERROR\n WRONG BORDER !");
+		write(1, "ERROR\n WRONG BORDER !", 21);
 		return (1);
 	}
 	return (0);
