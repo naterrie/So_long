@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:21:32 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/03 15:49:51 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/05 17:54:55 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 
 int		check_elements(char **map);
 int		check_file_name(char *file);
+int		check_mid_border(int count, char *map);
 int		check_border(char **map);
 
 int		nbline(char *file);

@@ -6,11 +6,11 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 19:07:31 by naterrie          #+#    #+#             */
-/*   Updated: 2022/12/09 17:18:52 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/05 15:07:22 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../so_long.h"
 
 char	*ft_get_line(char *buf)
 {

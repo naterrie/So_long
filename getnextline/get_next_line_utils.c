@@ -6,11 +6,11 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 19:07:30 by naterrie          #+#    #+#             */
-/*   Updated: 2022/12/11 13:27:28 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/05 15:07:20 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../so_long.h"
 
 size_t	ft_strlen(char *s)
 {
@@ -28,13 +28,16 @@ int	ft_strchr(char *s, int c)
 {
 	int	i;
 
-	i = -1;
-	if (!s || !c)
+	i = 0;
+	if (!s)
 		return (0);
-	while (s[++i])
+	if (!c)
+		return (0);
+	while (s[i])
 	{
 		if (s[i] == (char)c)
 			return (1);
+		i++;
 	}
 	return (0);
 }
@@ -59,7 +62,7 @@ char	*ft_strjoin(char *buf, char *temp)
 		return (free(buf), NULL);
 	i = -1;
 	j = 0;
-	while (buf[i++])
+	while (buf[++i])
 		str[i] = buf[i];
 	while (temp[j] != '\0')
 		str[i++] = temp[j++];

@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:19:31 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/03 15:41:21 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/05 18:07:55 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,28 +41,43 @@ int	check_elements(char **map)
 	return (0);
 }
 
+int	check_mid_border(int count, char *map)
+{
+	int	i;
+
+	i = 0;
+	if (map[i] != '1')
+		return (1);
+	while (map[i] != '\n')
+		i++;
+	i--;
+	if (map[i] != '1')
+		return (1);
+	return (0);
+}
+
 int	check_border(char **map)
 {
 	int	i;
 	int	j;
 	int	count;
 
+	i = 0;
 	j = 1;
-	while (map[0][i] == '1' || map[0][i])
+	while (map[0][i] && map[0][i] == '1')
 		i++;
-	count = i;
+	count = i - 1;
 	while (map[j])
 	{
-		i = 0;
-		if (map[j][i] != '1')
-			return (1);
-		while (map[j][i] && map[j][i] != '\n')
-			i++;
-		if (i != count || map[j][i] != '1')
+		if (check_mid_border(count, map[j]) == 1)
 			return (1);
 		j++;
 	}
-	while (map[j][i] == '1' || map[j][i])
+	j--;
+	i = 0;
+	while (map[j][i] && map[j][i] == '1')
 		i++;
+	if ((i - 1) != count)
+		return (1);
 	return (0);
 }

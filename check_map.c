@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:14:33 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/03 15:49:55 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/05 18:07:49 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@ int	nbline(char *file)
 	int	fd;
 
 	line = 0;
-	fd = open(file,	O_RDONLY);
+	fd = open(file, O_RDONLY);
 	while (get_next_line(fd) != 0)
 		line++;
-	return (line);
+	close(fd);
+	return (line + 1);
 }
 
 int	check_file_name(char *file)
@@ -31,6 +32,7 @@ int	check_file_name(char *file)
 	i = 0;
 	while (file[i])
 		i++;
+	i--;
 	if (file[i] == 'r')
 	{
 		i--;
@@ -43,13 +45,13 @@ int	check_file_name(char *file)
 				return (0);
 		}
 	}
-	write(1, "ERROR\n WRONG FILE NAME", 22);
+	write(1, "ERROR\nWRONG FILE NAME", 21);
 	return (1);
 }
 
-int	check_map_char(char map, char need)
+int	check_map_char(char charmap, char need)
 {
-	if (map == need)
+	if (charmap == need)
 		return (1);
 	else
 		return (0);
@@ -60,17 +62,20 @@ char	**mapset(char *file)
 	char	**map;
 	int		i;
 	int		fd;
+	int		line;
 
 	i = 0;
-	map = malloc(sizeof(char *) * nbline);
+	line = nbline(file);
+	map = malloc(sizeof(char *) * line);
 	if (!map)
 		return (NULL);
 	fd = open(file, O_RDONLY);
-	while (map[i])
+	while (i < line)
 	{
 		map[i] = get_next_line(fd);
 		i++;
 	}
+	close(fd);
 	return (map);
 }
 
@@ -87,13 +92,14 @@ int	check_map(char *file)
 	map = mapset(file);
 	if (check_elements(map) == 1)
 	{
-		write(1, "ERROR\n WRONG NUMBER ELEMENTS", 28);
-		return (1);
+		write(1, "ERROR\nWRONG NUMBER ELEMENTS", 27);
+		return (free(map), 1);
 	}
 	if (check_border(map) == 1)
 	{
-		write(1, "ERROR\n WRONG BORDER !", 21);
-		return (1);
+		write(1, "ERROR\nWRONG BORDER !", 20);
+		return (free(map), 1);
 	}
+	free (map);
 	return (0);
 }
