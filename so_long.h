@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:21:32 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/05 17:54:55 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/05 18:26:10 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,15 @@
 # include <fcntl.h>
 # include <stdarg.h>
 
+int		check_path(char *file);
+
 int		check_elements(char **map);
-int		check_file_name(char *file);
 int		check_mid_border(int count, char *map);
 int		check_border(char **map);
 
 int		nbline(char *file);
 int		check_file_name(char *file);
-int		check_map_char(char map, char need);
+int		check_map_char(char charmap, char need);
 char	**mapset(char *file);
 int		check_map(char *file);
 
@@ -41,15 +42,5 @@ char	*ft_next_buf(char *buf);
 char	*ft_get_line(char *buf);
 char	*ft_read_line(int fd, char *buf);
 char	*ft_strjoin(char *buf, char *temp);
-
-int		putnbr(int nb);
-int		ft_putnbr(int n);
-int		ft_putchar(char c);
-int		ft_putstr(const char *s);
-int		ft_printf(const char *s, ...);
-int		ft_putunsigned_nbr(unsigned int nb);
-int		ft_Check_Caracter(char *c, va_list args);
-int		ft_putptr(unsigned long long nbr, int n);
-int		ft_puthexa_nbr(unsigned int nbr, const char *base);
 
 #endif

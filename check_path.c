@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   check_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 16:16:31 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/03 15:17:48 by naterrie         ###   ########lyon.fr   */
+/*   Created: 2023/01/05 18:15:59 by naterrie          #+#    #+#             */
+/*   Updated: 2023/01/05 18:22:11 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
-
-int	ft_putstr(const char *s)
+int	check_path(char *file)
 {
-	int	i;
+	char	**map
 
-	if (s == 0)
-		return (ft_putstr("(null)"));
-	i = 0;
-	while (s[i])
-	{
-		ft_putchar(s[i]);
-		i++;
-	}
-	return (i);
+	open(file, O_RDONLY);
 }
