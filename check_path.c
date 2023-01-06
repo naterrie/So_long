@@ -6,13 +6,52 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 18:15:59 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/05 18:22:11 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/06 12:31:09 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "so_long.h"
+
+int	check_wall(char **map, int x, int y)
+{
+	int	i;
+
+	i = 0;
+	return (i);
+}
+
+int	check_path_validity(char **map, int x, int y)
+{
+	int	i;
+
+	i = check_wall(map, x, y);
+	return (i);
+}
+
 int	check_path(char *file)
 {
-	char	**map
+	char	**map;
+	int		x;
+	int		y;
 
-	open(file, O_RDONLY);
+	x = 0;
+	y = 0;
+	map = mapset(file);
+	while (map[x])
+	{
+		y = 0;
+		while (map[x][y])
+		{
+			if (check_map_char(map[x][y], 'P') == 1)
+			{
+				if (check_path_validity(map, x, y) == 1)
+					return (1);
+				else
+					return (0);
+			}
+			y++;
+		}
+		x++;
+	}
+	return (0);
 }

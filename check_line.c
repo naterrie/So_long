@@ -6,11 +6,48 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:19:31 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/05 18:07:55 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/06 13:26:53 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	check_invalid_char(char c)
+{
+	int	i;
+
+	i = 0;
+	i += check_map_char(c, 'P');
+	i += check_map_char(c, 'E');
+	i += check_map_char(c, 'C');
+	i += check_map_char(c, '1');
+	i += check_map_char(c, '0');
+	i += check_map_char(c, '\n');
+	return (i);
+}
+
+int	check_other_char(char **map)
+{
+	int	i;
+	int	j;
+
+	j = 1;
+	while (map[j])
+	{
+		i = 0;
+		while (map[j][i])
+		{
+			if (check_invalid_char(map[j][i]) == 0)
+			{
+				write(1, "ERROR\nOTHER CHARACTER DETECTED", 30);
+				return (1);
+			}
+			i++;
+		}
+		j++;
+	}
+	return (0);
+}
 
 int	check_elements(char **map)
 {
@@ -52,6 +89,8 @@ int	check_mid_border(int count, char *map)
 		i++;
 	i--;
 	if (map[i] != '1')
+		return (1);
+	if (i != count)
 		return (1);
 	return (0);
 }

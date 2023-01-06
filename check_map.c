@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:14:33 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/05 18:07:49 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/06 12:25:48 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ int	check_map(char *file)
 		write(1, "ERROR\nWRONG BORDER !", 20);
 		return (free(map), 1);
 	}
+	if (check_other_char(map) == 1)
+		return (1);
 	free (map);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:21:32 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/05 18:26:10 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/06 14:35:50 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,15 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdarg.h>
+# include "minilibx/mlx.h"
+
+int		so_long(char *file);
 
 int		check_path(char *file);
+int		check_path_validity(char **map, int x, int y);
 
+int		check_invalid_char(char c);
+int		check_other_char(char **map);
 int		check_elements(char **map);
 int		check_mid_border(int count, char *map);
 int		check_border(char **map);
