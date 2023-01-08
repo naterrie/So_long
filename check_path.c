@@ -12,20 +12,37 @@
 
 #include "so_long.h"
 
-int	check_wall(char **map, int x, int y)
+void	set_char_check(char **map, int x, int y)
 {
-	int	i;
+	if (map[x][y] == '1')
+		return (0);
+	else (map[x][y] != '1')
+	{
+		map[x][y] = 'x';
+		set_char_check(map, x + 1, y,);
+		set_char_check(map, x - 1 , y);
+		set_char_check(map, y + 1, x,);
+		set_char_check(map, y - 1, x,);
+	}
+}
 
-	i = 0;
-	return (i);
+int	check_after_collect()
+{
+	return (0);
+}
+
+int	check_before_collect()
+{
+	return (0);
 }
 
 int	check_path_validity(char **map, int x, int y)
 {
-	int	i;
-
-	i = check_wall(map, x, y);
-	return (i);
+	if (check_before_collect == 1)
+		return (1);
+	if (check_after_collect == 1)
+		return (1);
+	return (0);
 }
 
 int	check_path(char *file)
@@ -53,5 +70,5 @@ int	check_path(char *file)
 		}
 		x++;
 	}
-	return (0);
+	return (free (map), 0);
 }
