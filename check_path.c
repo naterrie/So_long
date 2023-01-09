@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-void	set_char_check(char **map, int x, int y)
+void	set_char_after(char **map, int x, int y)
 {
 	if (map[x][y] == '1')
 		return (0);
@@ -26,21 +26,61 @@ void	set_char_check(char **map, int x, int y)
 	}
 }
 
-int	check_after_collect()
+void	set_char_before(char **map, int x, int y)
 {
+	if (map[x][y] == '1' || map[x][y] == 'E')
+		return (0);
+	if (map[x][y] != '1' || map[x][y] != 'E')
+	{
+		map[x][y] = 'x';
+		set_char_check(map, x + 1, y,);
+		set_char_check(map, x - 1 , y);
+		set_char_check(map, y + 1, x,);
+		set_char_check(map, y - 1, x,);
+	}
+}
+
+int	check_after_collect(char **map, int x, int y)
+{
+	set_char_after(char **map, int x, int y);
+	x = 0;
+	while (map[x])
+	{
+		y = 0;
+		while (map[x][y])
+		{
+			if (map[x][y] == '0' || map[x][y] == 'C' || map[x][y] == 'E')
+				return (1);
+			y++;
+		}
+		x++;
+	}
 	return (0);
 }
 
-int	check_before_collect()
+int	check_before_collect(char **map, int x, int y)
 {
+	set_char_before(char **map, int x, int y);
+	x = 0;
+	while (map[x])
+	{
+		y = 0;
+		while (map[x][y])
+		{
+			if (map[x][y] == '0' || map[x][y] == 'C')
+				return (1);
+			y++;
+		}
+		x++;
+	}
 	return (0);
 }
 
 int	check_path_validity(char **map, int x, int y)
 {
-	if (check_before_collect == 1)
+	if (check_before_collect(char **map, int x, int y) == 1)
 		return (1);
-	if (check_after_collect == 1)
+	if (check_after_collect(char **map, int x, int y) == 1)
 		return (1);
 	return (0);
 }

@@ -22,7 +22,10 @@ int	main(int argc, char **argv)
 	if (check_map(argv[1]) == 1)
 		return (1);
 	if (check_path(argv[1]) == 1)
+	{
+		write(1, "ERROR\nIMPOSSIBLE MAP", 20):
 		return (1);
+	}
 	write(1, "it's working", 12);
 	if (so_long(argv[1]) == 1)
 		return (1);
