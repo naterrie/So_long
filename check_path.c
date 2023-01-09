@@ -14,9 +14,9 @@
 
 void	set_char_after(char **map, int x, int y)
 {
-	if (map[x][y] == '1')
+	if (map[x][y] == '1' || map[x][y] == 'x')
 		return (0);
-	else (map[x][y] != '1')
+	else (map[x][y] != '1' || map[x][y] == 'x')
 	{
 		map[x][y] = 'x';
 		set_char_check(map, x + 1, y,);
@@ -28,9 +28,9 @@ void	set_char_after(char **map, int x, int y)
 
 void	set_char_before(char **map, int x, int y)
 {
-	if (map[x][y] == '1' || map[x][y] == 'E')
+	if (map[x][y] == '1' || map[x][y] == 'E' || map[x][y] == 'x')
 		return (0);
-	if (map[x][y] != '1' || map[x][y] != 'E')
+	if (map[x][y] != '1' || map[x][y] != 'E' || map[x][y] == 'x')
 	{
 		map[x][y] = 'x';
 		set_char_check(map, x + 1, y,);
@@ -50,7 +50,7 @@ int	check_after_collect(char **map, int x, int y)
 		while (map[x][y])
 		{
 			if (map[x][y] == '0' || map[x][y] == 'C' || map[x][y] == 'E')
-				return (1);
+				return (free (map), 1);
 			y++;
 		}
 		x++;
@@ -68,7 +68,7 @@ int	check_before_collect(char **map, int x, int y)
 		while (map[x][y])
 		{
 			if (map[x][y] == '0' || map[x][y] == 'C')
-				return (1);
+				return (free (map), 1);
 			y++;
 		}
 		x++;

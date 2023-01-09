@@ -24,22 +24,24 @@
 # include <stdarg.h>
 # include "minilibx/mlx.h"
 
-int		so_long(char *file);
+int 	check_invalid_char(char c);
+int 	check_other_char(char **map);
+int	    check_elements(char **map);
+int 	check_mid_border(int count, char *map);
+int 	check_border(char **map);
 
-int		check_path(char *file);
-int		check_path_validity(char **map, int x, int y);
+int	    nbline(char *file);
+int 	check_file_name(char *file);
+int	    check_map_char(char charmap, char need);
+char	**mapset(char *file)
+int 	check_map(char *file);
 
-int		check_invalid_char(char c);
-int		check_other_char(char **map);
-int		check_elements(char **map);
-int		check_mid_border(int count, char *map);
-int		check_border(char **map);
-
-int		nbline(char *file);
-int		check_file_name(char *file);
-int		check_map_char(char charmap, char need);
-char	**mapset(char *file);
-int		check_map(char *file);
+void	set_char_after(char **map, int x, int y);
+void	set_char_before(char **map, int x, int y);
+int	    check_after_collect(char **map, int x, int y);
+int 	check_before_collect(char **map, int x, int y);
+int 	check_path_validity(char **map, int x, int y);
+int	    check_path(char *file);
 
 size_t	ft_strlen(char *s);
 int		ft_strchr(char *s, int c);
