@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:21:32 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/10 10:31:08 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/10 11:01:26 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdarg.h>
-# include "minilibx/mlx.h"
+# include "mlx/mlx.h"
 
 int		so_long(char *file);
 

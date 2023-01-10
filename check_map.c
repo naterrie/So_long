@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:14:33 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/06 12:25:48 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/10 12:25:48 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,7 @@ char	**mapset(char *file)
 int	check_map(char *file)
 {
 	char	**map;
-	int		i;
 	int		line;
-	int		fd;
 
 	line = nbline(file);
 	if (check_file_name(file) == 1)
