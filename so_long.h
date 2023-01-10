@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:21:32 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/06 14:35:50 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/10 10:31:08 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,23 @@
 # include <stdarg.h>
 # include "minilibx/mlx.h"
 
-int 	check_invalid_char(char c);
-int 	check_other_char(char **map);
-int	    check_elements(char **map);
-int 	check_mid_border(int count, char *map);
-int 	check_border(char **map);
+int		so_long(char *file);
 
-int	    nbline(char *file);
-int 	check_file_name(char *file);
-int	    check_map_char(char charmap, char need);
-char	**mapset(char *file)
-int 	check_map(char *file);
+int		check_invalid_char(char c);
+int		check_other_char(char **map);
+int		check_elements(char **map);
+int		check_mid_border(int count, char *map);
+int		check_border(char **map);
 
-void	set_char_after(char **map, int x, int y);
-void	set_char_before(char **map, int x, int y);
-int	    check_after_collect(char **map, int x, int y);
-int 	check_before_collect(char **map, int x, int y);
-int 	check_path_validity(char **map, int x, int y);
-int	    check_path(char *file);
+int		nbline(char *file);
+int		check_file_name(char *file);
+int		check_map_char(char charmap, char need);
+char	**mapset(char *file);
+int		check_map(char *file);
+
+int		set_map_path(char **map, int x, int y);
+int		check_collect(char **map, int x, int y);
+int		check_path(char *file);
 
 size_t	ft_strlen(char *s);
 int		ft_strchr(char *s, int c);

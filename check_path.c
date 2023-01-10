@@ -6,82 +6,42 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 18:15:59 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/06 12:31:09 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/10 10:27:32 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	set_char_after(char **map, int x, int y)
+int	set_map_path(char **map, int x, int y)
 {
 	if (map[x][y] == '1' || map[x][y] == 'x')
 		return (0);
-	else (map[x][y] != '1' || map[x][y] == 'x')
+	else if (map[x][y] != '1' || map[x][y] == 'x')
 	{
 		map[x][y] = 'x';
-		set_char_check(map, x + 1, y,);
-		set_char_check(map, x - 1 , y);
-		set_char_check(map, y + 1, x,);
-		set_char_check(map, y - 1, x,);
+		set_map_path(map, x + 1, y);
+		set_map_path(map, x - 1, y);
+		set_map_path(map, x, y + 1);
+		set_map_path(map, x, y - 1);
 	}
+	return (0);
 }
 
-void	set_char_before(char **map, int x, int y)
+int	check_collect(char **map, int x, int y)
 {
-	if (map[x][y] == '1' || map[x][y] == 'E' || map[x][y] == 'x')
-		return (0);
-	if (map[x][y] != '1' || map[x][y] != 'E' || map[x][y] == 'x')
-	{
-		map[x][y] = 'x';
-		set_char_check(map, x + 1, y,);
-		set_char_check(map, x - 1 , y);
-		set_char_check(map, y + 1, x,);
-		set_char_check(map, y - 1, x,);
-	}
-}
-
-int	check_after_collect(char **map, int x, int y)
-{
-	set_char_after(char **map, int x, int y);
+	set_map_path(map, x, y);
 	x = 0;
 	while (map[x])
 	{
 		y = 0;
 		while (map[x][y])
 		{
-			if (map[x][y] == '0' || map[x][y] == 'C' || map[x][y] == 'E')
+			if (map[x][y] == 'E' || map[x][y] == 'C')
 				return (free (map), 1);
 			y++;
 		}
 		x++;
 	}
-	return (0);
-}
-
-int	check_before_collect(char **map, int x, int y)
-{
-	set_char_before(char **map, int x, int y);
-	x = 0;
-	while (map[x])
-	{
-		y = 0;
-		while (map[x][y])
-		{
-			if (map[x][y] == '0' || map[x][y] == 'C')
-				return (free (map), 1);
-			y++;
-		}
-		x++;
-	}
-	return (0);
-}
-
-int	check_path_validity(char **map, int x, int y)
-{
-	if (check_before_collect(char **map, int x, int y) == 1)
-		return (1);
-	if (check_after_collect(char **map, int x, int y) == 1)
-		return (1);
 	return (0);
 }
 
@@ -101,7 +61,7 @@ int	check_path(char *file)
 		{
 			if (check_map_char(map[x][y], 'P') == 1)
 			{
-				if (check_path_validity(map, x, y) == 1)
+				if (check_collect(map, x, y) == 1)
 					return (1);
 				else
 					return (0);

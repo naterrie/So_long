@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:07:29 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/06 14:35:27 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/10 10:11:31 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 		return (1);
 	if (check_path(argv[1]) == 1)
 	{
-		write(1, "ERROR\nIMPOSSIBLE MAP", 20):
+		write (1, "ERROR\nIMPOSSIBLE MAP", 20);
 		return (1);
 	}
 	write(1, "it's working", 12);
