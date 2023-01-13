@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 16:26:51 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/13 17:28:03 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/13 17:44:35 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int	player_position(t_mlx *mlx_test, int i, int j)
 	}
 	else
 	{
+		ft_putnbr(movement);
+		write(1, "\n", 1);
 		if (mlx_test->map[mlx_test->y][mlx_test->x] == 'C')
 			mlx_test->map[mlx_test->y][mlx_test->x] = '0';
 		if (mlx_test->map[mlx_test->y][mlx_test->x] == 'E' \
@@ -71,7 +73,6 @@ int	player_position(t_mlx *mlx_test, int i, int j)
 		}
 		movement++;
 	}
-	printmap(mlx_test->map);
 	return (0);
 }
 

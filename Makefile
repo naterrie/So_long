@@ -11,8 +11,7 @@ SRCS =	main.c \
 		getnextline/get_next_line.c \
 		getnextline/get_next_line_utils.c \
 		so_long.c \
-		movement.c \
-		to_delete.c
+		movement.c
 
 all: $(NAME)
 $(NAME): $(OBJS)

@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:21:32 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/13 17:24:38 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/13 17:43:08 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int		set_map_path(char **map, int x, int y);
 int		check_collect(char **map, int x, int y);
 int		check_path(char *file);
 
+void	ft_putchar(char c);
+void	ft_putnbr(int nb);
 size_t	ft_strlen(char *s);
 int		ft_strchr(char *s, int c);
 char	*get_next_line(int fd);
@@ -62,7 +64,5 @@ char	*ft_strjoin(char *buf, char *temp);
 int		key_hook(int key, t_mlx *mlx_test);
 void	set_placement(t_mlx *mlx_test);
 int		player_position(t_mlx *mlx_test, int i, int j);
-
-void	printmap(char **map);
 
 #endif
