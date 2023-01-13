@@ -10,7 +10,9 @@ SRCS =	main.c \
 		check_map.c \
 		getnextline/get_next_line.c \
 		getnextline/get_next_line_utils.c \
-		so_long.c
+		so_long.c \
+		movement.c \
+		to_delete.c
 
 all: $(NAME)
 $(NAME): $(OBJS)
