@@ -14,7 +14,7 @@ SRCS =	main.c \
 		movement.c
 
 all: $(NAME)
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) Makefile
 	gcc $(CFLAGS) $(MLXFLAGS) $(OBJS) -o $(NAME)
 
 %.o: %.c $(HEADERS)
@@ -22,6 +22,7 @@ $(NAME): $(OBJS)
 
 clean:
 	rm -f $(OBJS) $(OBJS_BNS)
+	$(MAKE) clean -C mlx/
 
 fclean: clean
 	rm -f $(NAME) $(NAME_BNS)

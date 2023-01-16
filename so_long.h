@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:21:32 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/13 17:43:08 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/16 17:34:19 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@
 # include <fcntl.h>
 # include <stdarg.h>
 # include "mlx/mlx.h"
+
+typedef struct image
+{
+	void	*img;
+	char	*path;
+	int		weight;
+	int		height;
+}	t_img;
 
 typedef struct mlx
 {
