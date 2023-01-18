@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 16:26:51 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/18 14:55:32 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/18 18:06:07 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,25 @@ int	player_position(t_mlx *mlx, int i, int j)
 int	key_hook(int key, t_mlx *mlx)
 {
 	if (key == 13)
+	{
 		player_position(mlx, -1, 0);
+		set_sprite(mlx, 2, -1, 0);
+	}
 	if (key == 1)
+	{
 		player_position(mlx, 1, 0);
+		set_sprite(mlx, 2, 1, 0);
+	}
 	if (key == 0)
+	{
 		player_position(mlx, 0, -1);
+		set_sprite(mlx, 2, 0, -1);
+	}
 	if (key == 2)
+	{
 		player_position(mlx, 0, 1);
+		set_sprite(mlx, 2, 0, 1);
+	}
 	if (key == 53)
 		ft_close(mlx);
 	return (0);

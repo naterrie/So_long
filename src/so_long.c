@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 13:34:28 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/18 14:50:31 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/18 18:09:13 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	so_long(char *file)
 	set_placement(&mlx);
 	mlx.mlx = mlx_init();
 	mlx.win = mlx_new_window(mlx.mlx, window_lenght, window_weight, "so_long");
-	print_map(mlx);
+	set_sprite(&mlx, 1, 0, 0);
 	mlx_key_hook(mlx.win, key_hook, &mlx);
 	mlx_hook(mlx.win, 17, 0, ft_close, &mlx);
 	mlx_loop(mlx.mlx);
