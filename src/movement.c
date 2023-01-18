@@ -6,11 +6,17 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 16:26:51 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/13 17:44:35 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/18 14:55:32 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	ft_close(t_mlx *mlx)
+{
+	free (mlx->map);
+	exit(0);
+}
 
 int	exit_collect(char **map)
 {
@@ -32,64 +38,59 @@ int	exit_collect(char **map)
 	return (0);
 }
 
-void	set_placement(t_mlx *mlx_test)
+void	set_placement(t_mlx *mlx)
 {
-	while (mlx_test->map[mlx_test->y])
+	mlx->y = 0;
+	while (mlx->map[mlx->y])
 	{
-		mlx_test->x = 0;
-		while (mlx_test->map[mlx_test->y][mlx_test->x])
+		mlx->x = 0;
+		while (mlx->map[mlx->y][mlx->x])
 		{
-			if (mlx_test->map[mlx_test->y][mlx_test->x] == 'P')
+			if (mlx->map[mlx->y][mlx->x] == 'P')
 				return ;
-			mlx_test->x++;
+			mlx->x++;
 		}
-		mlx_test->y++;
+		mlx->y++;
 	}
 }
 
-int	player_position(t_mlx *mlx_test, int i, int j)
+int	player_position(t_mlx *mlx, int i, int j)
 {
 	static int	movement;
 
-	mlx_test->y += i;
-	mlx_test->x += j;
-	if (mlx_test->y <= 0 || mlx_test->x <= 0 || \
-		mlx_test->map[mlx_test->y][mlx_test->x] == '1')
+	mlx->y += i;
+	mlx->x += j;
+	if (mlx->y <= 0 || mlx->x <= 0 || \
+		mlx->map[mlx->y][mlx->x] == '1')
 	{
-		mlx_test->y -= i;
-		mlx_test->x -= j;
+		mlx->y -= i;
+		mlx->x -= j;
 	}
 	else
 	{
 		ft_putnbr(movement);
 		write(1, "\n", 1);
-		if (mlx_test->map[mlx_test->y][mlx_test->x] == 'C')
-			mlx_test->map[mlx_test->y][mlx_test->x] = '0';
-		if (mlx_test->map[mlx_test->y][mlx_test->x] == 'E' \
-			&& exit_collect(mlx_test->map) == 0)
-		{
-			free(mlx_test->map);
-			exit(0);
-		}
+		if (mlx->map[mlx->y][mlx->x] == 'C')
+			mlx->map[mlx->y][mlx->x] = '0';
+		if (mlx->map[mlx->y][mlx->x] == 'E' \
+			&& exit_collect(mlx->map) == 0)
+			ft_close(mlx);
 		movement++;
 	}
 	return (0);
 }
 
-int	key_hook(int key, t_mlx *mlx_test)
+int	key_hook(int key, t_mlx *mlx)
 {
 	if (key == 13)
-		player_position(mlx_test, -1, 0);
+		player_position(mlx, -1, 0);
 	if (key == 1)
-		player_position(mlx_test, 1, 0);
+		player_position(mlx, 1, 0);
 	if (key == 0)
-		player_position(mlx_test, 0, -1);
+		player_position(mlx, 0, -1);
 	if (key == 2)
-		player_position(mlx_test, 0, 1);
+		player_position(mlx, 0, 1);
 	if (key == 53)
-	{
-		free (mlx_test->map);
-		exit(0);
-	}
+		ft_close(mlx);
 	return (0);
 }

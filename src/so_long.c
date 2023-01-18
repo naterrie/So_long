@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 13:34:28 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/16 18:59:32 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/18 14:50:31 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,22 @@
 
 int	so_long(char *file)
 {
-	t_mlx	mlx_test;
-	t_img	img;
-	int		y;
-	int		x;
+	t_mlx	mlx;
+	int		window_lenght;
+	int		window_weight;
 
-	y = 0;
-	x = 0;
-	mlx_test.map = mapset(file);
-	set_placement(&mlx_test);
-	img.height = 0;
-	img.weight = 0;
-	img.path = "image/brick.xpm";
-	mlx_test.mlx = mlx_init();
-	mlx_test.win = mlx_new_window(mlx_test.mlx, 640, 480, "so_long");
-	mlx_key_hook(mlx_test.win, key_hook, &mlx_test);
-	img.img = mlx_xpm_file_to_image(mlx_test.mlx, img.img, &img.weight, &img.height);
-	mlx_put_image_to_window(mlx_test.mlx, mlx_test.win, img.img, x, y);
-	mlx_loop(mlx_test.mlx);
+	mlx.map = mapset(file);
+	window_weight = 0;
+	while (mlx.map[window_weight])
+		window_weight++;
+	window_weight = window_weight * 64;
+	window_lenght = (ft_strlen(mlx.map[0]) - 1) * 64;
+	set_placement(&mlx);
+	mlx.mlx = mlx_init();
+	mlx.win = mlx_new_window(mlx.mlx, window_lenght, window_weight, "so_long");
+	print_map(mlx);
+	mlx_key_hook(mlx.win, key_hook, &mlx);
+	mlx_hook(mlx.win, 17, 0, ft_close, &mlx);
+	mlx_loop(mlx.mlx);
 	return (0);
 }

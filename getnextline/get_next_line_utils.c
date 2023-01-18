@@ -6,11 +6,11 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 19:07:30 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/13 17:43:21 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/18 12:16:14 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../src/so_long.h"
 
 void	ft_putchar(char c)
 {

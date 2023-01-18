@@ -4,18 +4,22 @@ MLXFLAGS =	-L mlx -lmlx -framework OpenGL -framework Appkit
 HEADERS = so_long.h
 OBJS =	$(SRCS:.c=.o)
 
-SRCS =	main.c \
-		check_line.c \
-		check_path.c \
-		check_map.c \
+SRCS =	src/main.c \
+		src/check_line.c \
+		src/check_path.c \
+		src/check_map.c \
 		getnextline/get_next_line.c \
 		getnextline/get_next_line_utils.c \
-		so_long.c \
-		movement.c
+		src/so_long.c \
+		src/movement.c \
+		src/print_map.c \
 
 all: $(NAME)
-$(NAME): $(OBJS) Makefile
-	gcc $(CFLAGS) $(MLXFLAGS) $(OBJS) -o $(NAME)
+$(NAME): $(OBJS) mlx/libmlx.a
+	gcc $(CFLAGS) -lz $(MLXFLAGS) $(OBJS) -o $(NAME)
+
+mlx/libmlx.a:
+	make -C ./mlx
 
 %.o: %.c $(HEADERS)
 	gcc $(CFLAGS) -c $< -o $@ -I

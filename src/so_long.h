@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:21:32 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/16 17:34:19 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/18 14:35:18 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,26 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdarg.h>
-# include "mlx/mlx.h"
+# include "../mlx/mlx.h"
 
-typedef struct image
+typedef struct sprite
 {
 	void	*img;
 	char	*path;
-	int		weight;
-	int		height;
-}	t_img;
+	int		w;
+	int		h;
+}	t_sprite;
+
+typedef struct image
+{
+	t_sprite	wall;
+	t_sprite	floor;
+	t_sprite	chara;
+	t_sprite	door;
+	t_sprite	collect;
+	int			y;
+	int			x;
+}	t_image;
 
 typedef struct mlx
 {
@@ -69,8 +80,12 @@ char	*ft_get_line(char *buf);
 char	*ft_read_line(int fd, char *buf);
 char	*ft_strjoin(char *buf, char *temp);
 
-int		key_hook(int key, t_mlx *mlx_test);
-void	set_placement(t_mlx *mlx_test);
-int		player_position(t_mlx *mlx_test, int i, int j);
+int		ft_close(t_mlx *mlx);
+int		key_hook(int key, t_mlx *mlx);
+void	set_placement(t_mlx *mlx);
+int		player_position(t_mlx *mlx, int i, int j);
+
+void	print_map(t_mlx mlx);
+void	check_char_window(t_image *img, t_mlx *mlx, char C);
 
 #endif
