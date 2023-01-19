@@ -19,6 +19,8 @@ void	change_movement(t_mlx *m, t_image *i, int y, int x)
 	mlx_put_image_to_window(m->mlx, m->win, i->floor.img, (m->x - x) * 64, (m->y - y) * 64);
 	if (m.map[m->y - y][m->x - x] == 'E')
 		mlx_put_image_to_window(m->mlx, m->win, i->door.img, (m->x - x) * 64, (m->y - y) * 64);
+	if (m.map[m->y - y][m->x - x] == '1')
+		mlx_put_image_to_window(m->mlx, m->win, i->wall.img, (m->x - x) * 64, (m->y - y) * 64);
 }
 
 void	check_char_window(t_image *i, t_mlx *m)
