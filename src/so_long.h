@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:21:32 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/18 18:10:09 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/20 14:02:15 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct image
 {
 	t_sprite	wall;
 	t_sprite	floor;
+	t_sprite	dooropen;
 	t_sprite	chara;
 	t_sprite	door;
 	t_sprite	collect;
@@ -80,13 +81,17 @@ char	*ft_get_line(char *buf);
 char	*ft_read_line(int fd, char *buf);
 char	*ft_strjoin(char *buf, char *temp);
 
+int		exit_collect(char **map);
 int		ft_close(t_mlx *mlx);
 int		key_hook(int key, t_mlx *mlx);
 void	set_placement(t_mlx *mlx);
 int		player_position(t_mlx *mlx, int i, int j);
 
+int		check_door_closed(char **map);
 void	change_movement(t_mlx *m, t_image *i, int y, int x);
 void	set_sprite(t_mlx *mlx, int num, int y, int x);
 void	check_char_window(t_image *i, t_mlx *m);
+
+void	fchange_sprite(t_mlx *m, t_image *i, int y, int x);
 
 #endif

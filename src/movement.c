@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 16:26:51 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/18 18:06:07 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/20 12:58:48 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	player_position(t_mlx *mlx, int i, int j)
 	else
 	{
 		ft_putnbr(movement);
-		write(1, "\n", 1);
+		write(1, " moves\n", 7);
 		if (mlx->map[mlx->y][mlx->x] == 'C')
 			mlx->map[mlx->y][mlx->x] = '0';
 		if (mlx->map[mlx->y][mlx->x] == 'E' \
