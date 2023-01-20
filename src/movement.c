@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 16:26:51 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/20 12:58:48 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/20 16:48:27 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_close(t_mlx *mlx)
 {
-	free (mlx->map);
+	freemap(mlx->map);
 	exit(0);
 }
 

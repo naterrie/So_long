@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:25:21 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/20 14:13:50 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/20 15:58:09 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,23 +108,17 @@ void	set_sprite(t_mlx *mlx, int num, int y, int x)
 	t_image	img;
 
 	img.y = 0;
-	img.wall.path = "image/wall.xpm";
-	img.floor.path = "image/floor.xpm";
-	img.door.path = "image/door.xpm";
-	img.chara.path = "image/character.xpm";
-	img.collect.path = "image/collect.xpm";
-	img.dooropen.path = "image/dooropen.xpm";
-	img.dooropen.img = mlx_xpm_file_to_image(mlx->mlx, img.dooropen.path, \
+	img.dooropen.img = mlx_xpm_file_to_image(mlx->mlx, "image/dooropen.xpm", \
 											&img.dooropen.w, &img.dooropen.h);
-	img.door.img = mlx_xpm_file_to_image(mlx->mlx, img.door.path, \
+	img.door.img = mlx_xpm_file_to_image(mlx->mlx, "image/door.xpm", \
 										&img.door.w, &img.door.h);
-	img.floor.img = mlx_xpm_file_to_image(mlx->mlx, img.floor.path, \
+	img.floor.img = mlx_xpm_file_to_image(mlx->mlx, "image/floor.xpm", \
 										&img.floor.w, &img.floor.h);
-	img.wall.img = mlx_xpm_file_to_image(mlx->mlx, img.wall.path, \
+	img.wall.img = mlx_xpm_file_to_image(mlx->mlx, "image/wall.xpm", \
 										&img.wall.w, &img.wall.h);
-	img.chara.img = mlx_xpm_file_to_image(mlx->mlx, img.chara.path, \
+	img.chara.img = mlx_xpm_file_to_image(mlx->mlx, "image/character.xpm", \
 										&img.wall.w, &img.wall.h);
-	img.collect.img = mlx_xpm_file_to_image(mlx->mlx, img.collect.path, \
+	img.collect.img = mlx_xpm_file_to_image(mlx->mlx, "image/collect.xpm", \
 										&img.collect.w, &img.collect.h);
 	if (num == 1)
 		check_char_window(&img, mlx);

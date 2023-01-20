@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:14:33 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/10 12:25:48 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/20 16:58:22 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,15 +91,14 @@ int	check_map(char *file)
 	if (check_elements(map) == 1)
 	{
 		write(1, "ERROR\nWRONG NUMBER ELEMENTS", 27);
-		return (free(map), 1);
+		return (freemap(map), 1);
 	}
 	if (check_border(map) == 1)
 	{
 		write(1, "ERROR\nWRONG BORDER !", 20);
-		return (free(map), 1);
+		return (freemap(map), 1);
 	}
 	if (check_other_char(map) == 1)
-		return (1);
-	free (map);
-	return (0);
+		return (freemap(map), 1);
+	return (freemap(map), 0);
 }

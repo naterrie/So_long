@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 18:15:59 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/13 17:41:47 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/20 16:34:54 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,13 @@ int	check_path(char *file)
 			if (check_map_char(map[x][y], 'P') == 1)
 			{
 				if (check_collect(map, x, y) == 1)
-					return (1);
+					return (free(map), 1);
 				else
-					return (0);
+					return (free (map), 0);
 			}
 			y++;
 		}
 		x++;
 	}
-	return (free (map), 0);
+	return (0);
 }

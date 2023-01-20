@@ -6,11 +6,24 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 13:34:28 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/20 14:02:08 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/20 16:51:59 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	freemap(char **map)
+{
+	int	y;
+
+	y = 0;
+	while (map[y])
+	{
+		free(map[y]);
+		y++;
+	}
+	free (map);
+}
 
 void	fchange_sprite(t_mlx *m, t_image *i, int y, int x)
 {

@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:21:32 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/20 14:02:15 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/20 16:36:32 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 typedef struct sprite
 {
 	void	*img;
-	char	*path;
 	int		w;
 	int		h;
 }	t_sprite;
@@ -92,6 +91,7 @@ void	change_movement(t_mlx *m, t_image *i, int y, int x);
 void	set_sprite(t_mlx *mlx, int num, int y, int x);
 void	check_char_window(t_image *i, t_mlx *m);
 
+void	freemap(char **map);
 void	fchange_sprite(t_mlx *m, t_image *i, int y, int x);
 
 #endif
