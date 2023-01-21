@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:14:33 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/20 16:58:22 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/21 11:41:43 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,20 @@
 
 int	nbline(char *file)
 {
-	int	line;
-	int	fd;
+	int		line;
+	int		fd;
+	char	*temp;
 
 	line = 0;
 	fd = open(file, O_RDONLY);
-	while (get_next_line(fd) != 0)
+	while (1)
+	{
+		temp = get_next_line(fd);
+		if (temp == 0)
+			break ;
+		free (temp);
 		line++;
+	}
 	close(fd);
 	return (line + 1);
 }
@@ -63,6 +70,7 @@ char	**mapset(char *file)
 	int		i;
 	int		fd;
 	int		line;
+	char	*temp;
 
 	i = 0;
 	line = nbline(file);
@@ -72,10 +80,12 @@ char	**mapset(char *file)
 	fd = open(file, O_RDONLY);
 	while (i < line)
 	{
-		map[i] = get_next_line(fd);
+		temp = get_next_line(fd);
+		map[i] = temp;
 		i++;
 	}
 	close(fd);
+	free (temp);
 	return (map);
 }
 
