@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:21:32 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/20 16:36:32 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/21 16:52:40 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct image
 	t_sprite	chara;
 	t_sprite	door;
 	t_sprite	collect;
+	t_sprite	mob;
 	int			y;
 	int			x;
 }	t_image;

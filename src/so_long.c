@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 13:34:28 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/20 16:51:59 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/21 16:35:12 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,12 @@ void	fchange_sprite(t_mlx *m, t_image *i, int y, int x)
 		mlx_put_image_to_window(m->mlx, m->win, i->door.img, \
 								(m->x - x) * 32, (m->y - y) * 32);
 	if (m->map[m->y - y][m->x - x] == '1')
+	{
 		mlx_put_image_to_window(m->mlx, m->win, i->wall.img, \
 								(m->x - x) * 32, (m->y - y) * 32);
+		return ;
+	}
+	//ft_movemob
 }
 
 int	so_long(char *file)
@@ -55,8 +59,8 @@ int	so_long(char *file)
 	mlx.mlx = mlx_init();
 	mlx.win = mlx_new_window(mlx.mlx, window_lenght, window_weight, "so_long");
 	set_sprite(&mlx, 1, 0, 0);
-	mlx_key_hook(mlx.win, key_hook, &mlx);
 	mlx_hook(mlx.win, 17, 0, ft_close, &mlx);
+	mlx_hook(mlx.win, 2, 0, key_hook, &mlx);
 	mlx_loop(mlx.mlx);
 	return (0);
 }

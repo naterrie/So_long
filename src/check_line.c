@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:19:31 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/21 11:15:13 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/21 16:41:20 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	check_invalid_char(char c)
 	i += check_map_char(c, 'C');
 	i += check_map_char(c, '1');
 	i += check_map_char(c, '0');
+	i += check_map_char(c, 'M');
 	i += check_map_char(c, '\n');
 	return (i);
 }
