@@ -6,17 +6,11 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 16:26:51 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/23 15:57:47 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/23 18:20:10 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int	ft_close(t_mlx *mlx)
-{
-	freemap(mlx->map);
-	exit(0);
-}
 
 int	exit_collect(char **map)
 {

@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:21:32 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/23 15:57:55 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/23 17:43:09 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,6 @@ void	freemap(char **map);
 void	fchange_sprite(t_mlx *m, t_image *i, int y, int x);
 
 void	change_position_on_map(t_mlx *mlx, int i, int j);
-void	ft_movemob(t_mlx *m, t_image *img, int y, int x);
+void	where_mob(t_mlx *m, t_image *img, int y, int x);
 
 #endif
