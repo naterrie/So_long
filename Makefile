@@ -13,6 +13,7 @@ SRCS =	src/main.c \
 		src/so_long.c \
 		src/movement.c \
 		src/print_map.c \
+		src/move_mob.c
 
 all: $(NAME)
 $(NAME): $(OBJS) mlx/libmlx.a

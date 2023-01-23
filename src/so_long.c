@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 13:34:28 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/21 16:35:12 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/23 15:33:57 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	fchange_sprite(t_mlx *m, t_image *i, int y, int x)
 								(m->x - x) * 32, (m->y - y) * 32);
 		return ;
 	}
-	//ft_movemob
+	ft_movemob(m, i, 0, 0);
 }
 
 int	so_long(char *file)

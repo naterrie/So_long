@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:21:32 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/21 16:52:40 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/23 15:57:55 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int		exit_collect(char **map);
 int		ft_close(t_mlx *mlx);
 int		key_hook(int key, t_mlx *mlx);
 void	set_placement(t_mlx *mlx);
-int		player_position(t_mlx *mlx, int i, int j);
+void	player_position(t_mlx *mlx, int i, int j);
 
 int		check_door_closed(char **map);
 void	change_movement(t_mlx *m, t_image *i, int y, int x);
@@ -94,5 +94,8 @@ void	check_char_window(t_image *i, t_mlx *m);
 
 void	freemap(char **map);
 void	fchange_sprite(t_mlx *m, t_image *i, int y, int x);
+
+void	change_position_on_map(t_mlx *mlx, int i, int j);
+void	ft_movemob(t_mlx *m, t_image *img, int y, int x);
 
 #endif

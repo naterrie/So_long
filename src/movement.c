@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 16:26:51 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/20 16:48:27 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/23 15:57:47 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,30 +54,32 @@ void	set_placement(t_mlx *mlx)
 	}
 }
 
-int	player_position(t_mlx *mlx, int i, int j)
+void	player_position(t_mlx *mlx, int i, int j)
 {
 	static int	movement;
 
 	mlx->y += i;
 	mlx->x += j;
-	if (mlx->y <= 0 || mlx->x <= 0 || \
-		mlx->map[mlx->y][mlx->x] == '1')
+	if (mlx->y <= 0 || mlx->x <= 0 || mlx->map[mlx->y][mlx->x] == '1')
 	{
 		mlx->y -= i;
 		mlx->x -= j;
+		return ;
 	}
-	else
+	ft_putnbr(movement);
+	write(1, " moves\n", 7);
+	if (mlx->map[mlx->y][mlx->x] == 'C')
+		mlx->map[mlx->y][mlx->x] = '0';
+	if (mlx->map[mlx->y][mlx->x] == 'M')
 	{
-		ft_putnbr(movement);
-		write(1, " moves\n", 7);
-		if (mlx->map[mlx->y][mlx->x] == 'C')
-			mlx->map[mlx->y][mlx->x] = '0';
-		if (mlx->map[mlx->y][mlx->x] == 'E' \
-			&& exit_collect(mlx->map) == 0)
-			ft_close(mlx);
-		movement++;
+		write (1, "Ho no, you've encountered a mob and he killed you !\n", 51);
+		ft_close(mlx);
 	}
-	return (0);
+	change_position_on_map(mlx, i, j);
+	if (mlx->map[mlx->y][mlx->x] == 'E' && exit_collect(mlx->map) == 0)
+		ft_close(mlx);
+	movement++;
+	return ;
 }
 
 int	key_hook(int key, t_mlx *mlx)

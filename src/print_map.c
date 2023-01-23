@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:25:21 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/21 16:55:01 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/23 14:15:52 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,17 +81,13 @@ void	check_char_window(t_image *i, t_mlx *m)
 {
 	while (m->map[i->y])
 	{
-		i->x = 0;
-		int b = 0;
-		while (m->map[b])
-			printf("%s\n", m->map[b++]);
-		while (m->map[i->y][i->x])
+		i->x = -1;
+		while (m->map[i->y][++i->x])
 		{
 			if (m->map[i->y][i->x] == '1')
 				mlx_put_image_to_window(m->mlx, m->win, i->wall.img, \
 								i->x * 32, i->y * 32);
-			if (m->map[i->y][i->x] == '0' || m->map[i->y][i->x] == 'C' || \
-				m->map[i->y][i->x] == 'E' || m->map[i->y][i->x] == 'P' || m->map[i->y][i->x] == 'M')
+			else if (m->map[i->y][i->x] != '\n' || m->map[i->y][i->x] != '\0')
 				mlx_put_image_to_window(m->mlx, m->win, i->floor.img, \
 								i->x * 32, i->y * 32);
 			if (m->map[i->y][i->x] == 'E')
@@ -104,8 +100,7 @@ void	check_char_window(t_image *i, t_mlx *m)
 							m->x * 32, m->y * 32);
 			if (m->map[i->y][i->x] == 'M')
 				mlx_put_image_to_window(m->mlx, m->win, i->mob.img, \
-							m->x * 32, m->y * 32);
-			i->x++;
+							i->x * 32, i->y * 32);
 		}
 		i->y++;
 	}
