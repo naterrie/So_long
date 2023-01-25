@@ -6,87 +6,70 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:25:39 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/23 18:35:18 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/25 16:02:17 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	change_position_on_map(t_mlx *mlx, int i, int j)
+void	change_position_on_map(t_mlx *mlx)
 {
-	if (mlx->map[mlx->y][mlx->x] == 'E')
+	if (mlx->map[mlx->y][mlx->x] == 'E' && exit_collect(mlx->map) == 0)
+	{
+		write (1, "Congratulation ! You finished the map !\n", 40);
 		ft_close(mlx);
-	mlx->map[mlx->y][mlx->x] = 'P';
-	mlx->map[mlx->y - i][mlx->x - j] = '0';
-}
-
-void	mob_up_and_down(t_mlx *m, t_image *img, int y, int x)
-{
-	if (m->map[y - 1][x] == '0')
-	{
-		mlx_put_image_to_window(m->mlx, m->win, img->mob.img, \
-						x * 32, (y - 1) * 32);
-		mlx_put_image_to_window(m->mlx, m->win, img->floor.img, \
-				x * 32, y * 32);
-		m->map[y][x] = '0';
-		m->map[y - 1][x] = 'M';
-	}
-	else if (m->map[y + 1][x] == '0')
-	{
-		mlx_put_image_to_window(m->mlx, m->win, img->mob.img, \
-						x * 32, (y + 1) * 32);
-		mlx_put_image_to_window(m->mlx, m->win, img->floor.img, \
-				x * 32, y * 32);
-		m->map[y][x] = '0';
-		m->map[y + 1][x] = 'M';
 	}
 }
 
-void	mob_right(t_mlx *m, t_image *img, int y, int x)
+void	check_collision(t_mlx *mlx, int y, int x)
 {
-	if (m->map[y][x + 1] == '0')
+	if (mlx->y == y && mlx->x == x)
+	{
+		write (1, "Ho no, you've encountered a mob and he killed you !\n", 51);
+		ft_close(mlx);
+	}
+}
+
+void	mob_move(t_mlx *m, t_image *img, int y, int x)
+{
+	static int	n;
+
+	n++;
+	if (n % 2 == 0 && m->map[y][x + 1] == '0' && check_player(m, y, x + 1) == 0)
 	{
 		mlx_put_image_to_window(m->mlx, m->win, img->mob.img, \
-						(x + 1) * 32, y * 32);
+								(x + 1) * 32, y * 32);
 		mlx_put_image_to_window(m->mlx, m->win, img->floor.img, \
-				x * 32, y * 32);
-		m->map[y][x] = '0';
+								x * 32, y * 32);
 		m->map[y][x + 1] = 'M';
+		m->map[y][x] = '0';
+		check_collision(m, y, x + 1);
 	}
-	else
-		mob_up_and_down(m, img, y, x);
-}
-
-void	mob_left(t_mlx *m, t_image *img, int y, int x)
-{
-	if (m->map[y][x - 1] == '0')\
+	else if (m->map[y][x - 1] == '0' && check_player(m, y, x - 1) == 0)
 	{
 		mlx_put_image_to_window(m->mlx, m->win, img->mob.img, \
-						(x - 1) * 32, y * 32);
+								(x - 1) * 32, y * 32);
 		mlx_put_image_to_window(m->mlx, m->win, img->floor.img, \
-				x * 32, y * 32);
-		m->map[y][x] = '0';
+								x * 32, y * 32);
 		m->map[y][x - 1] = 'M';
+		m->map[y][x] = '0';
+		check_collision(m, y, x - 1);
 	}
-	else
-		mob_up_and_down(m, img, y, x);
 }
 
 void	where_mob(t_mlx *m, t_image *img, int y, int x)
 {
-	static int	numb;
-
-	numb++;
 	y = 0;
 	while (m->map[y])
 	{
 		x = 0;
 		while (m->map[y][x])
 		{
-			if (m->map[y][x] == 'M' && numb % 2 == 0)
-				mob_left(m, img, y, x);
-			else if (m->map[y][x] == 'M')
-				mob_right(m, img, y, x);
+			if (m->map[y][x] == 'M')
+			{
+				mob_move(m, img, y, x);
+				x++;
+			}
 			x++;
 		}
 		y++;

@@ -1,5 +1,5 @@
 NAME =	so_long
-CFLAGS =	-Wall -Werror -Wextra -fsanitize=address -g3
+CFLAGS =	-Wall -Werror -Wextra -g#-fsanitize=address -g3
 MLXFLAGS =	-L mlx -lmlx -framework OpenGL -framework Appkit
 HEADERS = so_long.h
 OBJS =	$(SRCS:.c=.o)

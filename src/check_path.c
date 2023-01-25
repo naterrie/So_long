@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 18:15:59 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/21 16:37:27 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/25 14:27:19 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	set_map_path(char **map, int x, int y)
 {
 	if (map[x][y] == '1' || map[x][y] == 'x' || map[x][y] == 'M' )
 		return (0);
-	else if (map[x][y] != '1' || map[x][y] == 'x'  || map[x][y] != 'M')
+	else if (map[x][y] != '1' || map[x][y] == 'x' || map[x][y] != 'M')
 	{
 		map[x][y] = 'x';
 		set_map_path(map, x + 1, y);

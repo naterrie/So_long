@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:21:32 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/23 17:43:09 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/25 16:02:34 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,12 @@ void	change_movement(t_mlx *m, t_image *i, int y, int x);
 void	set_sprite(t_mlx *mlx, int num, int y, int x);
 void	check_char_window(t_image *i, t_mlx *m);
 
+int		check_player(t_mlx *mlx, int y, int x);
 void	freemap(char **map);
 void	fchange_sprite(t_mlx *m, t_image *i, int y, int x);
 
-void	change_position_on_map(t_mlx *mlx, int i, int j);
+void	check_collision(t_mlx *mlx, int y, int x);
+void	change_position_on_map(t_mlx *mlx);
 void	where_mob(t_mlx *m, t_image *img, int y, int x);
 
 #endif

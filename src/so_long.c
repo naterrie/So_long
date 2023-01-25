@@ -6,11 +6,18 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 13:34:28 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/23 17:44:44 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/25 16:00:39 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	check_player(t_mlx *mlx, int y, int x)
+{
+	if (mlx->y == y && mlx->x == x)
+		return (1);
+	return (0);
+}
 
 void	freemap(char **map)
 {

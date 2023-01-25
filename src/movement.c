@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 16:26:51 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/23 18:20:10 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/25 15:53:22 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	player_position(t_mlx *mlx, int i, int j)
 		write (1, "Ho no, you've encountered a mob and he killed you !\n", 51);
 		ft_close(mlx);
 	}
-	change_position_on_map(mlx, i, j);
+	change_position_on_map(mlx);
 	if (mlx->map[mlx->y][mlx->x] == 'E' && exit_collect(mlx->map) == 0)
 		ft_close(mlx);
 	movement++;

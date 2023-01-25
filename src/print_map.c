@@ -6,7 +6,7 @@
 /*   By: naterrie <naterrie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:25:21 by naterrie          #+#    #+#             */
-/*   Updated: 2023/01/23 14:15:52 by naterrie         ###   ########lyon.fr   */
+/*   Updated: 2023/01/25 15:33:35 by naterrie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,8 @@ void	check_char_window(t_image *i, t_mlx *m)
 			if (m->map[i->y][i->x] == 'C')
 				mlx_put_image_to_window(m->mlx, m->win, i->collect.img, \
 								i->x * 32, i->y * 32);
-			mlx_put_image_to_window(m->mlx, m->win, i->chara.img, \
+			if (m->map[i->y][i->x] == 'P')
+				mlx_put_image_to_window(m->mlx, m->win, i->chara.img, \
 							m->x * 32, m->y * 32);
 			if (m->map[i->y][i->x] == 'M')
 				mlx_put_image_to_window(m->mlx, m->win, i->mob.img, \
