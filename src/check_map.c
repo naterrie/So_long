@@ -47,7 +47,7 @@ int	check_file_name(char *file)
 		{
 			i--;
 			if (file[i] == 'b')
-			i--;
+				i--;
 			if (file[i] == '.')
 				return (0);
 		}
@@ -92,9 +92,7 @@ char	**mapset(char *file)
 int	check_map(char *file)
 {
 	char	**map;
-	int		line;
 
-	line = nbline(file);
 	if (check_file_name(file) == 1)
 		return (1);
 	map = mapset(file);

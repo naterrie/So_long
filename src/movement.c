@@ -78,27 +78,29 @@ void	player_position(t_mlx *mlx, int i, int j)
 
 int	key_hook(int key, t_mlx *mlx)
 {
-	if (key == 13)
+	if (key == 119)
 	{
 		player_position(mlx, -1, 0);
 		set_sprite(mlx, 2, -1, 0);
 	}
-	if (key == 1)
+	if (key == 115)
 	{
 		player_position(mlx, 1, 0);
 		set_sprite(mlx, 2, 1, 0);
 	}
-	if (key == 0)
+	if (key == 97)
 	{
 		player_position(mlx, 0, -1);
 		set_sprite(mlx, 2, 0, -1);
 	}
-	if (key == 2)
+	if (key == 100)
 	{
 		player_position(mlx, 0, 1);
 		set_sprite(mlx, 2, 0, 1);
 	}
-	if (key == 53)
+	if (key == 32)
+		where_mob(mlx, 0, 0);
+	if (key == 65307)
 		ft_close(mlx);
 	return (0);
 }

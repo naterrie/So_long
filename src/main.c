@@ -12,9 +12,19 @@
 
 #include "so_long.h"
 
-int	ft_close(t_mlx *mlx)
+int	ft_close(t_mlx *m)
 {
-	freemap(mlx->map);
+	if (m->i.dooropen.img)
+		mlx_destroy_image(m->mlx, m->i.dooropen.img);
+	mlx_destroy_image(m->mlx, m->i.wall.img);
+	mlx_destroy_image(m->mlx, m->i.floor.img);
+	mlx_destroy_image(m->mlx, m->i.collect.img);
+	mlx_destroy_image(m->mlx, m->i.chara.img);
+	mlx_destroy_image(m->mlx, m->i.door.img);
+	mlx_destroy_image(m->mlx, m->i.mob.img);
+	mlx_destroy_window(m->mlx, m->win);
+	mlx_destroy_display(m->mlx);
+	freemap(m->map);
 	exit(0);
 }
 

@@ -30,16 +30,16 @@ void	check_collision(t_mlx *mlx, int y, int x)
 	}
 }
 
-void	mob_move(t_mlx *m, t_image *img, int y, int x)
+void	mob_move(t_mlx *m, int y, int x)
 {
 	static int	n;
 
 	n++;
 	if (n % 2 == 0 && m->map[y][x + 1] == '0' && check_player(m, y, x + 1) == 0)
 	{
-		mlx_put_image_to_window(m->mlx, m->win, img->mob.img, \
+		mlx_put_image_to_window(m->mlx, m->win, m->i.mob.img, \
 								(x + 1) * 32, y * 32);
-		mlx_put_image_to_window(m->mlx, m->win, img->floor.img, \
+		mlx_put_image_to_window(m->mlx, m->win, m->i.floor.img, \
 								x * 32, y * 32);
 		m->map[y][x + 1] = 'M';
 		m->map[y][x] = '0';
@@ -47,9 +47,9 @@ void	mob_move(t_mlx *m, t_image *img, int y, int x)
 	}
 	else if (m->map[y][x - 1] == '0' && check_player(m, y, x - 1) == 0)
 	{
-		mlx_put_image_to_window(m->mlx, m->win, img->mob.img, \
+		mlx_put_image_to_window(m->mlx, m->win, m->i.mob.img, \
 								(x - 1) * 32, y * 32);
-		mlx_put_image_to_window(m->mlx, m->win, img->floor.img, \
+		mlx_put_image_to_window(m->mlx, m->win, m->i.floor.img, \
 								x * 32, y * 32);
 		m->map[y][x - 1] = 'M';
 		m->map[y][x] = '0';
@@ -57,7 +57,7 @@ void	mob_move(t_mlx *m, t_image *img, int y, int x)
 	}
 }
 
-void	where_mob(t_mlx *m, t_image *img, int y, int x)
+void	where_mob(t_mlx *m, int y, int x)
 {
 	y = 0;
 	while (m->map[y])
@@ -67,7 +67,7 @@ void	where_mob(t_mlx *m, t_image *img, int y, int x)
 		{
 			if (m->map[y][x] == 'M')
 			{
-				mob_move(m, img, y, x);
+				mob_move(m, y, x);
 				x++;
 			}
 			x++;

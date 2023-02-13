@@ -47,6 +47,7 @@ typedef struct mlx
 	char	**map;
 	int		y;
 	int		x;
+	t_image	i;
 }	t_mlx;
 
 # ifndef BUFFER_SIZE
@@ -54,6 +55,7 @@ typedef struct mlx
 # endif
 
 int		so_long(char *file);
+void	where_mob(t_mlx *m, int y, int x);
 
 int		check_invalid_char(char c);
 int		check_other_char(char **map);
@@ -83,21 +85,22 @@ char	*ft_strjoin(char *buf, char *temp);
 
 int		exit_collect(char **map);
 int		ft_close(t_mlx *mlx);
+void	freeall_images(t_mlx *m);
 int		key_hook(int key, t_mlx *mlx);
 void	set_placement(t_mlx *mlx);
 void	player_position(t_mlx *mlx, int i, int j);
 
 int		check_door_closed(char **map);
-void	change_movement(t_mlx *m, t_image *i, int y, int x);
+void	change_movement(t_mlx *m, int y, int x);
 void	set_sprite(t_mlx *mlx, int num, int y, int x);
-void	check_char_window(t_image *i, t_mlx *m);
+void	check_char_window(t_mlx *m);
 
 int		check_player(t_mlx *mlx, int y, int x);
 void	freemap(char **map);
-void	fchange_sprite(t_mlx *m, t_image *i, int y, int x);
+void	fchange_sprite(t_mlx *m, int y, int x);
 
 void	check_collision(t_mlx *mlx, int y, int x);
 void	change_position_on_map(t_mlx *mlx);
-void	where_mob(t_mlx *m, t_image *img, int y, int x);
+void	where_mob(t_mlx *m, int y, int x);
 
 #endif

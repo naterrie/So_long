@@ -1,6 +1,6 @@
 NAME =	so_long
-CFLAGS =	-Wall -Werror -Wextra -g#-fsanitize=address -g3
-MLXFLAGS =	-L mlx -lmlx -framework OpenGL -framework Appkit
+CFLAGS = -Wall -Werror -Wextra
+MLXFLAGS = -L ./mlx -lmlx -lXext -lX11 -lm -lbsd
 HEADERS = so_long.h
 OBJS =	$(SRCS:.c=.o)
 
@@ -15,15 +15,15 @@ SRCS =	src/main.c \
 		src/print_map.c \
 		src/move_mob.c
 
-all: $(NAME)
+all: $(NAME) Makefile
 $(NAME): $(OBJS) mlx/libmlx.a
-	gcc $(CFLAGS) -lz $(MLXFLAGS) $(OBJS) -o $(NAME)
+	cc $(CFLAGS) -o $(NAME) $(OBJS) $(MLXFLAGS)
 
 mlx/libmlx.a:
 	make -C ./mlx
 
 %.o: %.c $(HEADERS)
-	gcc $(CFLAGS) -c $< -o $@ -I
+	cc $(CFLAGS) -I -c $< -o $@
 
 clean:
 	rm -f $(OBJS) $(OBJS_BNS)
